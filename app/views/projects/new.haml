@@ -1,0 +1,14 @@
+= nested_form_for Project.new do |form|
+  %fieldset
+    %p
+      = form.label :name
+      %br/
+      = form.text_field :name
+    = form.fields_for :tasks do |task_form|
+      %h4 Task
+      = task_form.text_field :name
+    %p
+      = form.link_to_add "[+] Add a task", :tasks  
+
+    .actions
+      = form.submit 'Save'
